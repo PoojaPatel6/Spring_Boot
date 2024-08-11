@@ -34,12 +34,14 @@ public class JdbcCrudSpringbootApplication implements CommandLineRunner {
 //	User user3 = new User("Divesh","divesh@gmail.com","Male", "Bangalore");
 //	User user4 = new User("Amit","amit@gmail.com","male", "Mumbai");
 //	User user5 = new User("Aman","aman@gmail.com","male", "Rajsthan");
+//      User user6 = new User("Divya","aman@gmail.com","female", "Bihar");
 	
 //	boolean status = userDao.insertUser(user1);
 //	boolean status = userDao.insertUser(user2);
 //	boolean status = userDao.insertUser(user3);
 //	boolean status = userDao.insertUser(user4);
 //	boolean status = userDao.insertUser(user5);
+//	boolean status = userDao.insertUser(user6);
 //	if(status) {
 //		System.out.println("User Inserted Successfully");
 //	}
