@@ -1,0 +1,57 @@
+package com.pooja.firstboot;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model; // Corrected the import for Model
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller
+public class HomeController {
+	
+	@Autowired
+	private UserService userService;
+	
+	@GetMapping("/")
+	public String home(Model model) {
+		model.addAttribute("listUsers",userService.getAllUser());
+		return "index";
+	}
+	
+	@GetMapping("/register")
+	public String register(Model model) { 
+		User user = new User();
+		model.addAttribute("user", user);
+		return "register";
+	}
+
+	@PostMapping("/saveUser") 
+	public String saveUser(@ModelAttribute("user") User user) {
+		userService.saveUser(user);
+		return "redirect:/";
+	}
+	
+	@GetMapping("/deleteUse/{id}")
+	
+	public String deleteUser(@PathVariable Long id) {
+		
+		userService.deleteUserById(id);
+		
+		return "redirect:/";
+		
+	}
+	
+	@GetMapping("/showUpdate/{id}")
+	public String showUpdateForm(@PathVariable Long id, Model model) {
+		Optional<User> user = userService.getUserById(id);
+		model.addAttribute("user", user);
+		return "update_user";
+		
+		
+	}
+	
+}

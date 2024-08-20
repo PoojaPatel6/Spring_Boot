@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Good Thymes Virtual Grocery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" 
+          href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+  </head>
+
+  <body>
+  
+    <!--<p th:text="#{home.welcome}">Welcome to our grocery store!</p>-->
+  <h1 style="text-align:center">Welcome to Bangalore</h1>
+  <a href="register">  Register here</a>
+  
+  <div="display:flex;  justify-content:center;">
+   <table border="1">
+	
+	
+	<tr>
+		<th>Id</th>
+		<th>Name</th>
+		<th>Date of Birth</th>
+		
+		<th>E-Mail</th>
+		<th>City</th>
+		<th>Password</th>
+		<th>Operations</th>
+	</tr>
+	
+	<tr th:each="u:${listUsers}">
+	<td th:text="${u.id"}</td></td>
+	<td th:text="${u.name"}</td></td>
+	<td th:text="${u.dob"}</td></td>
+	<td th:text="${u.mail"}</td></td>
+	<td th:text="${u.city"}</td></td>
+	<td th:text="${u.passw"}</td></td>
+<!--	<td th:text="${u.id"}</td></td>-->\
+<td>
+	<a href="@{/showUpdate/+{id}(id=$(u.id))}" >Update></a>
+	<a th:href="@{/deleteUser/{id}(id=$(u.id))" >Delete></a>
+</td>
+</tr>
+
+</table>
+</div>
+  </body>
+
+</html>
